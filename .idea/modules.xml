@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/KULIAH.iml" filepath="$PROJECT_DIR$/KULIAH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modul2CodeLab/Modul2CodeLab.iml" filepath="$PROJECT_DIR$/Modul2CodeLab/Modul2CodeLab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modul2Kegiatan/Modul2Kegiatan.iml" filepath="$PROJECT_DIR$/Modul2Kegiatan/Modul2Kegiatan.iml" />
+    </modules>
+  </component>
+</project>

@@ -6,10 +6,10 @@ public class Kalkulator {
         System.out.println("Hasil Pekalian :" + perkalian(2, 2));
         System.out.println("Hasil Pembagian :" + pembagian(10, 2));
     }
-        static int penjumlahan(int var1,int var2){
+    static int penjumlahan(int var1,int var2){
 
         return (var1 + var2);
-        }
+    }
     static int perkalian(int var1,int var2){
 
         return (var1 * var2);

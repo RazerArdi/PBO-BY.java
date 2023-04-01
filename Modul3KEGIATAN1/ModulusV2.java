@@ -1,8 +1,8 @@
 package Modul3KEGIATAN1;
 
-public class oke {
+public class ModulusV2 {
     public static void main(String[] args) {
-        int[] kValues = {2, 4, 8, 16, 32, 64, 110};
+        int[] kValues = {36, 292};
         int[] resultValues = new int[kValues.length];
         int[] aaValues = new int[kValues.length];
         int[] dkValues = new int[kValues.length];
@@ -38,9 +38,10 @@ public class oke {
             int result = resultValues[i];
             int aa = aaValues[i];
             int dk = dkValues[i];
+            int hooh = dk * dk;
             System.out.println("2^" + ki + " mod 2579 = " + result);
             if (i < kValues.length - 1) {
-                System.out.println("\n" + "2^" + (ki * 2) + " mod 2579 = [" + aa + "][" + aa + "] mod 2579 = " + dk);
+                System.out.println("\n" + "2^" + (ki * 2) + " mod 2579 = [" + aa + "][" + aa + "] mod 2579 = " + hooh);
             }
         }
     }

@@ -1,11 +1,11 @@
 package Modul3KEGIATAN1;
 
-public class ojp {
+public class Modulus {
     public static void main(String[] args) {
         int base = 2;
         int modulus = 2579;
         int k = 2;
-        int max_k = 110;
+        int max_k = 256;
         int result;
 
         // Menghitung 2^ki mod 2579 untuk k = 2, 4, 8, 16, 32, 64, 110
@@ -15,13 +15,15 @@ public class ojp {
             k *= 2;
         }
 
-        // Menghitung 2^118 mod 2579
-        int dk1 = 64;
-        int dk2 = 46;
+        // Menghitung 2^XX mod 2579
+        int dk1 = 256;
+        int dk2 = 36;
+        int hasil1 = dk1 + dk2;
         int aa = moduloPower(base, dk1, modulus);
-        int dd = moduloPower(aa, dk2, modulus);
-        System.out.printf("%n2^118 mod %d = (%d mod %d)(%d mod %d) mod %d = %d%n",
-                modulus, aa, modulus, moduloPower(base, dk2, modulus), modulus, modulus, dd);
+        int bb = moduloPower(base, dk2, modulus);
+        int dd = (aa * bb) % modulus;
+        System.out.printf("%n2^%d mod %d = %d%n",
+                hasil1, modulus, dd);
     }
 
     // Menghitung base^exponent mod modulus menggunakan metode pangkat biner

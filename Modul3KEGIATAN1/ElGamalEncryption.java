@@ -12,7 +12,7 @@ public class ElGamalEncryption {
         System.out.print("Masukkan nilai ki: ");
         int ki = scanner.nextInt();
 
-        BigInteger two = new BigInteger("2");
+        BigInteger two = new BigInteger("949");
         BigInteger mod = new BigInteger("2579");
 
         // menghitung nilai yi dengan rumus yi = 2^ki mod 2579

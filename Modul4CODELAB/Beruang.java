@@ -1,0 +1,25 @@
+package Modul4CODELAB;
+
+public class Beruang extends HEWAN implements IHerbivora, IKarnivora{
+    public Beruang() {
+        this.suara = "Haummmm";
+    }
+
+    @Override
+    public void tampilMakanan() {
+        System.out.println("Makanan: Daging + Tumbuhan");
+    }
+    @Override
+    public String getJenisHewan() {
+        return "Karnivora + Herbivora";
+    }
+
+    @Override
+    public String getMakanan() {
+        return "Daging + Tumbuhan";
+    }
+
+    public <T> T getters() { return null; }
+    public <T> void setters(T param){}
+}
+

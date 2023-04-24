@@ -36,6 +36,7 @@ public class Modul3Practice {
                 break;
             default:
                 System.out.println("Pilih yang betul!!!Butakah?");
+                break;
         }
     }
 }

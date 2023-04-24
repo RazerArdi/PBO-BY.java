@@ -14,7 +14,7 @@ class Converter {
             case "miles":
                 return setValueToMiles(value);
             default:
-                return -1.0;
+                return 0;
         }
     }
 

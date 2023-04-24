@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class FinalElgamaDecryption {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int yi = 2492;
+        int yi = 2575;
         int pangkat = 1813;
         int modulus = 2579;
 

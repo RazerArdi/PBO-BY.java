@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class User {
     private boolean admin;
+
+    private boolean admin(){
+        return (boolean) userDB[userIndex][0] && userDB[userIndex][3].equals("admin");
+    }
     private int userIndex;
     private Object[][] userDB;
     private static String DBT = "\t\t\t\t\t\tDibuat Oleh: Bayu Ardiyansyah\n";
@@ -21,6 +25,18 @@ public class User {
                 {"202210370311025", "UMM_a2022", 1, true},
                 {"202110370311025", "UMM_a2021", 2, true}
         };
+    }
+    public void updateStatusAdmin() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Input Status Admin : " +
+                "1. Aktif" +
+                "2. Tidak Aktif");
+        boolean newStatus = sc.nextBoolean();
+
+        // Update status di userDB
+        userDB[userIndex][3] = newStatus;
+        System.out.println("Status Admin berhasil terupdate");
     }
     public void login() {
         Scanner sc = new Scanner(System.in);
@@ -46,26 +62,67 @@ public class User {
             System.out.println("Username atau password salah");
         }
     }
+    private void updateStatusMahasiswa() {
+        Scanner ds = new Scanner(System.in);
+        System.out.print("Pilih : " +
+                "\n1. Aktif" +
+                "\n2. Tidak Aktif");
+        System.out.println("Input Status Mahasiswa : ");
+        boolean newStatus = ds.nextBoolean();
+
+        // Update status di userDB
+        userDB[userIndex][3] = newStatus;
+        System.out.println("Status Mahasiswa berhasil terupdate");
+    }
+
     public void dashboard() {
         System.out.println("Sistem Akademik UMM | Mahasiswa");
         System.out.println("Username: " + userDB[userIndex][0]);
-        System.out.println("Status Mahasiswa: " + userDB[userIndex][3]);
-        System.out.println("1. Update Password");
-        System.out.println("0. Log Out");
-        System.out.print("Pilih Menu: ");
+        System.out.println("Status Mahasiswa: " + ((boolean) userDB[userIndex][3] ? "Aktif" : "Non-Aktif"));
+        if (isAdmin()) {
+            System.out.println("Status Admin: " + ((boolean) userDB[userIndex][3] ? "Aktif" : "Non-Aktif"));
+            System.out.println("1. Update Status Mahasiswa");
+            System.out.println("2. Update Status Admin");
+            System.out.println("3. Update Password Mahasiswa");
+            System.out.println("0. Log Out");
+            System.out.print("Pilih Menu: ");
 
-        Scanner sc = new Scanner(System.in);
-        int choice = sc.nextInt();
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
 
-        switch (choice) {
-            case 0:
-                System.out.println("Terima kasih, Anda telah berhasil log out");
-                break;
-            case 1:
-                updatePassword();
-                break;
-            default:
-                System.out.println("Pilihan tidak tersedia");
+            switch (choice) {
+                case 0:
+                    System.out.println("Terima kasih, Anda telah berhasil log out");
+                    break;
+                case 1:
+                    updateStatusMahasiswa();
+                    break;
+                case 2:
+                    updateStatusAdmin();
+                    break;
+                case 3:
+                    updatePassword();
+                    break;
+                default:
+                    System.out.println("Pilihan tidak tersedia");
+            }
+        } else {
+            System.out.println("1. Update Password Mahasiswa");
+            System.out.println("0. Log Out");
+            System.out.print("Pilih Menu: ");
+
+            Scanner sc = new Scanner(System.in);
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 0:
+                    System.out.println("Terima kasih, Anda telah berhasil log out");
+                    break;
+                case 1:
+                    updatePassword();
+                default:
+                    System.out.println("Pilihan tidak tersedia");
+            }
         }
     }
     public void updatePassword() {
@@ -79,6 +136,7 @@ public class User {
             // Update password di userDB
             userDB[userIndex][1] = newPassword;
             System.out.println("Password berhasil terupdate");
+            login();
         } else {
             System.out.println("Password tidak memenuhi syarat");
         }
@@ -121,6 +179,7 @@ public class User {
 
     public boolean isAdmin() {
 
+        boolean admin = false;
         return admin;
     }
     public String toString() {
@@ -128,7 +187,6 @@ public class User {
         return super.toString();
     }
     public void setAdmin(boolean admin) {
-
         this.admin = admin;
     }
     public int getUserIndex() {

@@ -3,15 +3,14 @@ import java.util.Scanner;
 
 public class User {
     private boolean admin;
-
     private boolean admin(){
-        return (boolean) userDB[userIndex][0] && userDB[userIndex][3].equals("admin");
+        return userDB[userIndex][0].equals("admin") && userDB[userIndex][1].equals("admin");
     }
     private int userIndex;
-    private Object[][] userDB;
-    private static String DBT = "\t\t\t\t\t\tDibuat Oleh: Bayu Ardiyansyah\n";
-    private static String UNIV = "\t\t\t\t\t\tUniversitas Muhammadiyah Malang\n";
-    private static String NIM = "\t\t\t\t\t\t\t\t202210370311025\n";
+    Object[][] userDB;
+    static String DBT = "\t\t\t\t\t\tDibuat Oleh: Bayu Ardiyansyah\n";
+    static String UNIV = "\t\t\t\t\t\tUniversitas Muhammadiyah Malang\n";
+    static String NIM = "\t\t\t\t\t\t\t\t202210370311025\n";
 
     public static void main(String[] args) {
         System.out.println(DBT+ NIM + UNIV);
@@ -30,9 +29,9 @@ public class User {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Input Status Admin : " +
-                "1. Aktif" +
-                "2. Tidak Aktif");
-        boolean newStatus = sc.nextBoolean();
+                "\n1. True" +
+                "\n2. False");
+        boolean newStatus = sc.nextInt() == 1;
 
         // Update status di userDB
         userDB[userIndex][3] = newStatus;
@@ -62,13 +61,13 @@ public class User {
             System.out.println("Username atau password salah");
         }
     }
-    private void updateStatusMahasiswa() {
+    void updateStatusMahasiswa() {
         Scanner ds = new Scanner(System.in);
         System.out.print("Pilih : " +
-                "\n1. Aktif" +
-                "\n2. Tidak Aktif");
+                "\n1. True" +
+                "\n2. False");
         System.out.println("Input Status Mahasiswa : ");
-        boolean newStatus = ds.nextBoolean();
+        boolean newStatus = ds.nextInt() == 1;
 
         // Update status di userDB
         userDB[userIndex][3] = newStatus;
@@ -79,7 +78,7 @@ public class User {
         System.out.println("Sistem Akademik UMM | Mahasiswa");
         System.out.println("Username: " + userDB[userIndex][0]);
         System.out.println("Status Mahasiswa: " + ((boolean) userDB[userIndex][3] ? "Aktif" : "Non-Aktif"));
-        if (isAdmin()) {
+        if (admin()) {
             System.out.println("Status Admin: " + ((boolean) userDB[userIndex][3] ? "Aktif" : "Non-Aktif"));
             System.out.println("1. Update Status Mahasiswa");
             System.out.println("2. Update Status Admin");
@@ -141,7 +140,7 @@ public class User {
             System.out.println("Password tidak memenuhi syarat");
         }
     }
-    public boolean isPassSymbols(String password) {
+     boolean isPassSymbols(String password) {
         String symbols = "~`!@#$%^&*()-_+={}[]|\\:;\"'<>,.?/";
 
         for (int i = 0; i < symbols.length(); i++) {
@@ -151,7 +150,7 @@ public class User {
         }
         return false;
     }
-    public boolean isPassDigit(String password) {
+    boolean isPassDigit(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isDigit(password.charAt(i))) {
                 return true;
@@ -159,28 +158,21 @@ public class User {
         }
         return false;
     }
-    public boolean isPassUpperCase(String password) {
+    boolean isPassUpperCase(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isUpperCase(password.charAt(i))) {
                 return true;
             }
         }
-
         return false;
     }
-    public boolean isPassLowerCase(String password) {
+    boolean isPassLowerCase(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isLowerCase(password.charAt(i))) {
                 return true;
             }
         }
         return false;
-    }
-
-    public boolean isAdmin() {
-
-        boolean admin = false;
-        return admin;
     }
     public String toString() {
 
